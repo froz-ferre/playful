@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ModalService {
 
-  constructor() { }
+  constructor(private _viewContainerRef: ViewContainerRef,
+                      _factoryResolver: ComponentFactoryResolver) { }
 }
