@@ -7,6 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 import { AuthComponent } from './components/auth/auth.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { RegistrationComponent } from './components/auth/registration/registration.component';
+import { AuthentificateService } from './services/authentificate.service';
+import { AuthorizationComponent } from './components/auth/authorization/authorization.component';
 
 @NgModule({
   imports: [
@@ -14,7 +16,11 @@ import { RegistrationComponent } from './components/auth/registration/registrati
     routingModule,
     SharedModule
   ],
+  providers: [
+    AuthentificateService
+  ],
   declarations: [
+    AuthorizationComponent,
     DashboardComponent,
     SideNavComponent,
     AuthComponent,

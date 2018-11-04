@@ -3,6 +3,7 @@ import { ModuleWithProviders } from "@angular/core";
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NotFoundComponent } from '../shared/not-found/not-found.component';
 import { RegistrationComponent } from './components/auth/registration/registration.component';
+import { AuthorizationComponent } from './components/auth/authorization/authorization.component';
 
 const routes: Routes = [
     { path: '',  redirectTo: 'dashboard', pathMatch: 'full' },
@@ -11,6 +12,12 @@ const routes: Routes = [
         component: DashboardComponent,
         children: [{
            path: '', component: RegistrationComponent
+        }]
+    },
+    { path: 'authorize',
+        component: DashboardComponent,
+        children: [{
+           path: '', component: AuthorizationComponent
         }]
     },
     { path: 'oops', component: NotFoundComponent },
