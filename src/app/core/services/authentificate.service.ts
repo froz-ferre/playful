@@ -19,7 +19,7 @@ interface User {
 
 
 @Injectable()
-export class AuthService {
+export class AuthentificateService {
 
   user: Observable<User>;
 
@@ -77,24 +77,10 @@ export class AuthService {
   }
 
     // If error, console log and notify user
-    private handleError(error) {
-      // TODO: Notify user
-      console.error(error);
-    }
-
-    // Sets user data to firestore after succesful login
-    private setUserDoc(user) {
-
-      const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
-
-      const data: User = {
-        uid: user.uid,
-        email: user.email || null,
-        photoURL: 'https://avatars3.githubusercontent.com/u/12459942?s=460&v=4'
-      };
-      return userRef.set(data);
-    }
-
+  private handleError(error) {
+    // TODO: Notify user
+    console.error(error);
+  }
 
   private updateUserData(user) {
     // Sets user data to firestore on login
@@ -108,7 +94,10 @@ export class AuthService {
       photoURL: user.photoURL || 'https://avatars3.githubusercontent.com/u/12459942?s=460&v=4'
     };
 
-    return userRef.set(data, { merge: true });
+    return userRef.set(data, { merge: true }).catch(err => {
+      console.error('----> In updateUserData method <----');
+      console.log(err);
+    });
 
   }
 

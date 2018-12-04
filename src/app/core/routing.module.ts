@@ -8,16 +8,16 @@ import { AuthorizationComponent } from './components/auth/authorization/authoriz
 const routes: Routes = [
     { path: '',  redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'dashboard', component: DashboardComponent },
-    { path: 'registration',
-        component: DashboardComponent,
-        children: [{
-           path: '', component: RegistrationComponent
-        }]
-    },
     { path: 'authorize',
         component: DashboardComponent,
         children: [{
            path: '', component: AuthorizationComponent
+        }]
+    },
+    { path: 'registration',
+        component: DashboardComponent,
+        children: [{
+           path: '', component: RegistrationComponent
         }]
     },
     { path: 'oops', component: NotFoundComponent },

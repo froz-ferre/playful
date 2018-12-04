@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthentificateService } from '../../../services/authentificate.service';
 
 @Component({
   selector: 'app-authorization',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthorizationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthentificateService) { }
 
   ngOnInit() {
+  }
+
+  signWithGithub() {
+    this.authService.githubLogin();
   }
 
 }
